@@ -1,0 +1,78 @@
+:root {
+  --accent: #e1306c;
+  --accent-2: #f77737;
+  --bg: #000;
+  --surface: #121212;
+  --surface-2: #1c1c1c;
+  --border: #2a2a2a;
+  --text: #f5f5f5;
+  --muted: #a8a8a8;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Segoe UI", system-ui, sans-serif; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+
+/* ---------- Navbar ---------- */
+.navbar { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--border); }
+.navbar-inner { max-width: 640px; margin: auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+.brand { font-size: 1.5rem; font-weight: 800; background: linear-gradient(45deg, var(--accent-2), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-links { display: flex; align-items: center; gap: 16px; font-weight: 600; }
+.nav-links a { color: var(--muted); transition: color .15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 640px; margin: 24px auto; padding: 0 16px; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.card-pad { padding: 20px; }
+
+/* ---------- Login / Register ---------- */
+.auth-wrap { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+.auth-card { width: 100%; max-width: 360px; padding: 32px 28px; text-align: center; }
+.auth-card .brand { font-size: 2.4rem; display: block; margin-bottom: 20px; }
+.auth-card form, .new-post form { display: flex; flex-direction: column; gap: 10px; }
+.auth-card p { color: var(--muted); font-size: .9rem; margin: 18px 0 0; }
+.auth-card p a { color: var(--accent); font-weight: 600; }
+
+/* ---------- Forms ---------- */
+input, textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); color: var(--text); outline: none; resize: vertical; }
+input::placeholder, textarea::placeholder { color: var(--muted); }
+input:focus, textarea:focus { border-color: var(--accent); }
+
+.btn { border: 0; border-radius: 8px; padding: 10px 16px; font-weight: 600; cursor: pointer; color: #fff; background: linear-gradient(45deg, var(--accent-2), var(--accent)); transition: opacity .15s, transform .1s; }
+.btn:hover { opacity: .9; }
+.btn:active { transform: scale(.98); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn-ghost { background: none; color: var(--muted); padding: 6px 10px; }
+.btn-ghost:hover { color: var(--text); }
+
+.alert { padding: 10px 12px; border-radius: 8px; font-size: .9rem; text-align: left; }
+.alert.error { background: #3a1019; color: #ff8aa5; border: 1px solid #6b1a2c; }
+.alert.success { background: #0f2f1c; color: #6fdc9b; border: 1px solid #1c5a35; }
+
+/* ---------- Posts ---------- */
+.post-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; }
+.post-user { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; background: linear-gradient(45deg, var(--accent-2), var(--accent)); flex-shrink: 0; }
+.avatar.big { width: 84px; height: 84px; font-size: 2.2rem; }
+.post-image { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: var(--surface-2); }
+.post-body { padding: 12px 14px 16px; }
+.post-actions { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+.like-btn { border: 0; background: none; font-size: 1.6rem; cursor: pointer; line-height: 1; padding: 0; transition: transform .15s; }
+.like-btn:active { transform: scale(1.3); }
+.like-count { font-weight: 600; margin-left: 6px; }
+.caption b { margin-right: 6px; }
+
+/* ---------- Profile ---------- */
+.profile-head { display: flex; align-items: center; gap: 24px; padding: 24px; }
+.profile-head h2 { margin: 0 0 4px; }
+.profile-head span { color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 4px; background: var(--surface-2); }
+
+/* ---------- Misc ---------- */
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+.spinner { width: 32px; height: 32px; margin: 40px auto; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
